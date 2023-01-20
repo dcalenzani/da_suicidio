@@ -13,18 +13,19 @@ df = pd.read_csv('master.csv')
 url = 'https://en.wikipedia.org/wiki/Latin_America'
 latamdf = pd.read_html(url)[1] # El numero entre barras indica el indice de la tabla que buscamos extraer
 
-# Programa
+# Programa: Algunos print quedan comentados para realizarlos a discrecion en su analisis.
 # 1. Visualizar un poco de la informacion
 #print(latamdf.head(1))
 #print(df.head(1))
-# 2. Modificar los nombres de columnas y errores de tipeo
+# 2. Modificar los nombres de columnas
 latamdf = latamdf.rename(columns={'Country/Territory':'country', 'Capital(s)':'capital', 'Population.mw-parser-output .nobold{font-weight:normal}(2021)[2][3]':'population', 'Area(km2)[39]':'area', 'Density(people/km2)':'density', 'Subregion': 'subregion'})
 
-# 4. Revisar datos perdidos
+# 3. Revisar datos perdidos
 # print(df.isnull().sum())
 # print(df.isnull().sum())
+
 # 5. Eliminar columna con perdidas severas y columnas que no utilizaremos
-df = df.drop(['hdi_per_year', 'country_year'], axis=1)
+# df = df.drop(['hdi_per_year', 'country_year'], axis=1)
 latamdf = latamdf.drop(['Flag','Arms','Name(s) in official language(s)', 'Time(s) zone(s)'], axis=1)
 #print(latamdf.head(1))
 #print(df.head(1))
